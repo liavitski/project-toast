@@ -2,13 +2,15 @@ import React from 'react';
 
 import Toast from '../Toast';
 import styles from './ToastShelf.module.css';
+import { ToastContext } from '../ToastProvider/ToastProvider';
 
-function ToastShelf({ toasts, deleteToast }) {
+function ToastShelf() {
+  const { deleteToast, toasts } = React.useContext(ToastContext);
   return (
     <ol className={styles.wrapper}>
       {toasts.map(({ id, message, variant }) => (
         <li className={styles.toastWrapper} key={id}>
-          <Toast variant={variant} id={id} deleteToast={deleteToast}>
+          <Toast variant={variant} id={id}>
             {message}
           </Toast>
         </li>
