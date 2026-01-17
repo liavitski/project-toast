@@ -24,7 +24,10 @@ function ToastPlayground() {
 
       <form
         className={styles.controlsWrapper}
-        onSubmit={() => createToast(variant, message)}
+        onSubmit={(event) => {
+          event.preventDefault();
+          createToast(variant, message);
+        }}
       >
         <div className={styles.row}>
           <label
